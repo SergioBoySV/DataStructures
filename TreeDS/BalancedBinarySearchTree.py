@@ -1,3 +1,5 @@
+# This is a Tree with balancing capabilities (BBST)
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -223,6 +225,7 @@ class Tree:
                 i += 1
             print(f'{root.data}')
             self.printTree(root.right)
+
 
 # Testing tree insertion
 tree = Tree()

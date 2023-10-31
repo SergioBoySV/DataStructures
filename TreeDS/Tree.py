@@ -1,3 +1,5 @@
+# This is a basic Tree with insert, search, delete, and some printing capabilities
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -33,7 +35,6 @@ class Tree:
 
     def updateHeights(self, root: Node):
         if root is not None:
-            # root.height = subTreeHeight(root->pLeft)>subTreeHeight(root->pRight) ? subTreeHeight(root->pLeft) : subTreeHeight(root->pRight);
             root.height = self.getSubTreeHeight(root.left) if self.getSubTreeHeight(root.left) > self.getSubTreeHeight(root.right) else self.getSubTreeHeight(root.right)
             root.height = root.height + 1
             self.updateHeights(root.parent)
