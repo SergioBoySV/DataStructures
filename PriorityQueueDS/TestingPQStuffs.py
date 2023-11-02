@@ -1,4 +1,4 @@
-# Still working on this
+# This is essentially an implementation of a PQ where instead of inserting, you make a heap out of an existing array
 class Node:
     def __init__(self, data, priority):
         self.data = data
@@ -9,12 +9,12 @@ class Node:
 class PriorityQueue:
     def __init__(self):
         self.size = 0
-        self.heap = []
+        self.heap = []  # Array that serves as an implementation for a heap
 
     def insert(self, node: Node):
         pass
 
-    def remove(self):
+    def remove(self):  # Pops and returns the root of the heap. Also reorganizes the heap (extractMax)
         pass
 
     def maxHeapify(self, arr: list, i: int) -> None:

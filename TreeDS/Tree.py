@@ -134,4 +134,8 @@ tree.printTree(root)
 # print(f"right child: {testNode.right}")
 # print(f"height: {testNode.height}")
 
-
+'''
+Sources:
+Balanced Array to BST:
+https://www.geeksforgeeks.org/sorted-array-to-balanced-bst/
+'''
