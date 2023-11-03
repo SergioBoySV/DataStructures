@@ -103,5 +103,10 @@ Sources:
 Heapify Functions - 
 https://www.hackerearth.com/practice/notes/heaps-and-priority-queues/#:~:text=Based%20on%20heap%20structure%2C%20priority,maximum%20element%20from%20the%20Arr.
 https://www.geeksforgeeks.org/building-heap-from-array/
+https://www.geeksforgeeks.org/binary-heap/
+
+PQ General Info - 
 https://www.geeksforgeeks.org/priority-queue-set-1-introduction/
+https://stackoverflow.com/questions/18993269/difference-between-priority-queue-and-a-heap
+https://stackoverflow.com/questions/65882138/implementing-priority-queue-using-max-heap-vs-balanced-bst
 '''
