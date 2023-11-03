@@ -4,25 +4,25 @@ from collections import deque
 
 class Queue:
     def __init__(self):
-        self.buffer = deque()
+        self.queue = deque()
 
     def enqueue(self, data) -> None:
-        self.buffer.appendleft(data)
+        self.queue.appendleft(data)
 
     def dequeue(self):  # Returns any
-        return self.buffer.pop()
+        return self.queue.pop()
 
     def isEmpty(self) -> bool:
-        return len(self.buffer) == 0  # returns True or False
+        return len(self.queue) == 0  # returns True or False
 
     def getSize(self) -> int:
-        return len(self.buffer)
+        return len(self.queue)
 
     def getNext(self) -> int:  # Gets the next in line. Does not pop item.
-        return self.buffer[-1]
+        return self.queue[-1]
 
     def printQueue(self) -> None:
-        print(self.buffer)
+        print(self.queue)
 
 
 queue = Queue()

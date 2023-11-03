@@ -8,31 +8,28 @@ class Node:
 
 class PriorityQueue:
     def __init__(self):
-        self.size = 0
         self.heap = []  # Array that serves as an implementation for a heap
 
     def insert(self, node: Node) -> None:
         self.heap.append(node)
         self.buildMaxHeap(self.heap)
-        self.size += 1
 
     def remove(self) -> Node:  # AKA extractMax function. Pops and returns the root of the heap. Also reorganizes the heap
         ret = self.heap.pop(0)
         self.buildMaxHeap(self.heap)
-        self.size -= 1
         return ret
 
     def getMax(self) -> Node:  # Returns root of the heap. Does not pop!
         return self.heap[0]
 
     def getSize(self) -> int:
-        return self.size
+        return len(self.heap)
 
     def maxHeapify(self, heap: list, i: int) -> None:  # User should never use this function!
         leftChild = 2 * i + 1
         rightChild = 2 * i + 2
         largest = i
-        n = len(heap)
+        n = self.getSize()
 
         if leftChild < n and heap[leftChild].priority > heap[largest].priority:
             largest = leftChild
@@ -44,7 +41,7 @@ class PriorityQueue:
         # self.heap[i].index = i  # Works but does not index the middle element (the one we pass in buildMaxHeap)
 
     def buildMaxHeap(self, heap: list) -> None:
-        start = len(heap) // 2 - 1
+        start = self.getSize() // 2 - 1
         for i in range(start, -1, -1):
             self.maxHeapify(heap, i)
 
@@ -55,11 +52,11 @@ class PriorityQueue:
         print(f'{root.data} ', end='')
         # The following if statements help to determine if we're at a leaf node, if we are, break out
         # This traversal may not be right, get it checked!!!!!
-        if leftChild >= self.size:
+        if leftChild >= self.getSize():
             return
         else:
             self.printPQRec(self.heap[leftChild])
-        if rightChild >= self.size:
+        if rightChild >= self.getSize():
             return
         else:
             self.printPQRec(self.heap[rightChild])
@@ -67,8 +64,8 @@ class PriorityQueue:
     def printPQ(self) -> None:
         # self.printPQRec(self.heap[0])
         # print('')
-        for i in range(len(self.heap)):  # Iterative approach
-            print(self.heap[i].data, end=' ')
+        for i in range(self.getSize()):  # Iterative approach
+            print(self.heap[i].priority, end=' ')
         print('')
 
     def printPQAsTree(self) -> None:
