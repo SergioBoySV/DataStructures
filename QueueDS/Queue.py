@@ -7,19 +7,19 @@ class Queue:
         self.queue = deque()
 
     def enqueue(self, data) -> None:
-        self.queue.appendleft(data)
+        self.queue.append(data)  # Appends to the end of deque (as a normal list would)
 
-    def dequeue(self):  # Returns any
-        return self.queue.pop()
+    def dequeue(self):
+        return self.queue.popleft()  # Pops from the left (beginning of queue)
 
     def isEmpty(self) -> bool:
-        return len(self.queue) == 0  # returns True or False
+        return len(self.queue) == 0
 
     def getSize(self) -> int:
         return len(self.queue)
 
     def getNext(self) -> int:  # Gets the next in line. Does not pop item.
-        return self.queue[-1]
+        return self.queue[0]
 
     def printQueue(self) -> None:
         print(self.queue)
@@ -37,4 +37,5 @@ print(queue.getNext())
 
 print(queue.dequeue())
 queue.printQueue()
+print(queue.getNext())
 
