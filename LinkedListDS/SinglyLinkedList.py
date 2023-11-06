@@ -26,6 +26,8 @@ class LinkedList:
     def insertAtBeginning(self, newNode):
         if not isinstance(newNode, Node):
             newNode = createNode(newNode)
+        if self.isEmpty():
+            self.tail = newNode
 
         newNode.next = self.head
         self.head = newNode
@@ -35,18 +37,20 @@ class LinkedList:
     def insertAtEnd(self, newNode, tailNode=None):
         if tailNode is not None:
             tailNode.next = newNode
-            # self.tail = newNode
+            self.tail = newNode
             return
 
         if not isinstance(newNode, Node):
             newNode = createNode(newNode)
         if self.isEmpty():
             self.head = newNode
+            self.tail = newNode
             self.size += 1
             return
         for node in self:  # iterate until we get to the last element
             pass
         node.next = newNode
+        self.tail = newNode
         self.size += 1
         # tmpHead = self.head
         # while tmpHead.next is not None:  # Another method using a while loop
@@ -60,16 +64,16 @@ class LinkedList:
             newNode = createNode(newNode)
 
         if isinstance(targetNode, Node):
-            # if self.tail.data == targetNode.data:
-            #     self.insertAtEnd(newNode, tailNode=self.tail)
-            #     return
+            if self.tail.data == targetNode.data:
+                self.insertAtEnd(newNode, tailNode=self.tail)
+                return
             newNode.next = targetNode.next
             targetNode.next = newNode
             return
 
         if not isinstance(targetNode, Node):
-            # if self.tail.data == targetNode:  # If trying to insert after tail, call insertAtEnd
-            #     return self.insertAtEnd(newNode)
+            if self.tail.data == targetNode:  # If trying to insert after tail, call insertAtEnd
+                return self.insertAtEnd(newNode)
             for node in self:
                 if node.data == targetNode:
                     newNode.next = node.next
@@ -109,8 +113,8 @@ class LinkedList:
 
         if self.head.data == targetNode.data:
             return self.removeHead()
-        # if self.tail.data == targetNode.data:
-        #     return self.removeTail()
+        if self.tail.data == targetNode.data:
+            return self.removeTail()
         previousNode = self.head
         for node in self:
             if node.data == targetNode.data:
@@ -127,14 +131,14 @@ class LinkedList:
         self.head = self.head.next
         self.size -= 1
 
-    def removeTail(self):  # Needs work
-        if self.isEmpty():
-            raise Exception('Linked List is empty')
-        del self.tail
-        for node in self:  # iterate until we get to the last element
-            pass
-        self.tail = node
-        self.size -= 1
+    # def removeTail(self):  # Still needs work!!!
+    #     if self.isEmpty():
+    #         raise Exception('Linked List is empty')
+    #     del self.tail
+    #     for node in self:  # iterate until we get to the last element
+    #         pass
+    #     self.tail = node
+    #     self.size -= 1
 
     def getSize(self) -> int:
         return self.size
@@ -189,6 +193,7 @@ myLL.insertBefore(Node3, Node6)
 myLL.removeNode(Node7)
 myLL.insertBefore(Node1, Node7)
 myLL.insertAfter(Node3, Node5)
+print(myLL.tail.data)
 myLL.printLinkedList()
 
 # myLL.insertAtBeginning(1)
